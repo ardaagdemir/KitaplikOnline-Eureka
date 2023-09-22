@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/v1/book")
 @Validated
 public class BookController {
-
     Logger logger = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
 
@@ -35,7 +34,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.findByIsbn(isbn));
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<BookDto> getBookById(@PathVariable @NotEmpty String id) {
         return ResponseEntity.ok(bookService.findBookDetailsById(id));
     }

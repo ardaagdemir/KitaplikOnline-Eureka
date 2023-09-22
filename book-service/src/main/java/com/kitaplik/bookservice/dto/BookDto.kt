@@ -2,6 +2,11 @@ package com.kitaplik.bookservice.dto
 
 import com.kitaplik.bookservice.model.Book
 
+/*
+@JvmOverloads --> Bir sınıfın çeşitli constructorlarını oluşturmayı sağlar.
+                  Örneğin buradaki BookDto sınıfı için BookIdDto' su null olan ve BookIdDto' su olmayan birer constructor üretir.
+ */
+
 data class BookDto @JvmOverloads constructor(
     val id: BookIdDto? = null,
     val title: String,
@@ -9,7 +14,7 @@ data class BookDto @JvmOverloads constructor(
     val author: String,
     val pressName: String
 ) {
-    companion object {
+    companion object { //static bir metot oluşturmak
         @JvmStatic
         fun convert(from: Book): BookDto {
             return BookDto(
