@@ -9,6 +9,7 @@ import com.kitaplik.libraryservice.repository.ILibraryRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,7 +41,7 @@ public class LibraryService {
         return new LibraryDto(newLibrary.getId());
     }
 
-    public void addBOokToLibrary(AddBookRequest request){
+    public void addBookToLibrary(AddBookRequest request){
         String bookId = bookServiceClient.getBookByIsbn(request.getIsbn()).getBody().getBookId();
         Library library = libraryRepository.findById(request.getId())
                 .orElseThrow(() -> new LibraryNotFoundException("Library could not found by id: " + request.getId()));
@@ -48,4 +49,10 @@ public class LibraryService {
         libraryRepository.save(library);
     }
 
+    public List<String> getAllLibraries() {
+        return libraryRepository.findAll()
+                .stream()
+                .map(l -> l.getId())
+                .collect(Collectors.toList());
+    }
 }

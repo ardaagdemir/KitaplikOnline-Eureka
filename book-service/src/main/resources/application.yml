@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: book-service
+    name: book-service #microservices registers to eureka with the app name
   h2:
     console:
       path: /h2-console
