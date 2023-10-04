@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.kitaplik.bookservice;
+
+//request
+message BookId {
+  string bookId = 1;
+  string isbn = 2;
+}
+
+//response
+message Isbn {
+  string isbn = 1;
+}
+
+//rpc --> remote procedure call --> access modifier
+service BookService{
+  rpc getBookIdByIsbn (Isbn) returns (BookId);
+}
