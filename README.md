@@ -126,7 +126,7 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
 <br>Bu durumun önüne geçmek için sunucularda her zaman Eureka' ya yüksek öncelik verilir. Eureka' nın bulunduğu pod' a gerçek zamanlı olarak dinleme yapabilmek adına sinyaller gönderilir. 
 <br>Olası bir sorun oluştuğunda bu sorun henüz daha uygulamanın diğer alanlarına ulaşmadan, bu pod yerine yeni bir pod ayağa kaldırılır ve bu sayede Eureka' da herhangi bir hata olması durumu minimize edilebilir.
 <br> .
-  - _**Eureka kullanırken genellikle onunla beraber kullanılan HttpRequest-Response yapısı FeignClient'dır.**_
+  - _**Eureka kullanırken genellikle onunla beraber kullanılan HttpClient yapısı FeignClient'dır.**_
 ---
 
 ### Creating of Book, Library Microservices - Eureka Server Configuration - FeignClient Configuration
@@ -144,9 +144,9 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
 <br>.
 
 ### FeignClient 404-Error Decoder and Fault Tolerance (Circuit Breaker)
-- **Feign Client** isteklerinde herhangi bir hata oluştuğunda 500, 400 gibi hataların dönmesini engellemek, 
+- _**Feign Client**_ isteklerinde herhangi bir hata oluştuğunda 500, 400 gibi hataların dönmesini engellemek, 
 <br>hatanın mesajını görebilmek ve bu hata mesajlarından Rest Response'  a dönüştürmek için bir **Feing Client Error Decoder** sınıfı yazılmalıdır.
-- **Fault Tolerance** bir serviste sorun olduğunda veya veritabanında ilgili veri olmadığında bir servisin nasıl davranması gerektiğini belirleyebilen bir yöntemdir.(Business case'dir)
+- _**Fault Tolerance**_ bir serviste sorun olduğunda veya veritabanında ilgili veri olmadığında bir servisin nasıl davranması gerektiğini belirleyebilen bir yöntemdir.(Business case'dir)
 <br>.
 - **_Hata alındığında;_** 
   - **işlem durdurulabilir,**
