@@ -1,5 +1,6 @@
 server:
-  port: 0
+  port: 0 #random bir port verilebilir, diğer servisler eureka üzerinden ulaşacağı için hiçbir sorun yoktur
+          #sabit bir port verilirse eğer (örneğin 8081) bu servis bir kez daha çalıştırılamaz, port çakışması yaşanır
 
 spring:
   application:
@@ -17,7 +18,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
+      default-zone: ${EUREKA_URI:http://localhost:8761/eureka} #env varsa kullan yoksa default olarak 8761/eureka'yı kullan
 grpc:
   server:
     port: 9892

@@ -4,7 +4,7 @@ import com.kitaplik.bookservice.model.Book
 
 /*
 @JvmOverloads --> Bir sınıfın çeşitli constructorlarını oluşturmayı sağlar.
-                  Örneğin buradaki BookDto sınıfı için BookIdDto' su null olan ve BookIdDto' su olmayan birer constructor üretir.
+                  Örneğin buradaki BookDtookIo sınıfı için BdDto' su null olan ve BookIdDto' su olmayan birer constructor üretir.
  */
 
 data class BookDto @JvmOverloads constructor(

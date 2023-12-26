@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 /*
 CommandLineRunner, uygulama ayağa kalkarken veri ekleyebilmek için kullanılan bir implementasyondur.
+@EnableEurekaClient --> Eureka Server ile etkilesim kurmak için kullanılır.
  */
 
 @SpringBootApplication

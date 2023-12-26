@@ -9,7 +9,7 @@ spring:
           predicates:
             - Path=/v1/book**
         - id: library-service
-          uri: lb://library-service #lb --> loadbalancing, birden fazla library service �al??t?rd???m?zda hata almam?z? engelleyecektir
+          uri: lb://library-service #lb --> loadbalancing, birden fazla library service çalıştırdığımızda hata almamızı engelleyecektir
           predicates:
             - Path=/v1/library/**
       discovery:

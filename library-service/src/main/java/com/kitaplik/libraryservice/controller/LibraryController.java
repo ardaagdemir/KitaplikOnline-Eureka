@@ -22,7 +22,6 @@ public class LibraryController {
     public LibraryController(LibraryService libraryService, Environment environment) {
         this.libraryService = libraryService;
         this.environment = environment;
-        this.logger = logger;
     }
 
     @GetMapping("{id}")

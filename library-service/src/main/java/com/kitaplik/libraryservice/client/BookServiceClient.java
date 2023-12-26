@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "book-service", path = "/v1/book")
+@FeignClient(name = "book-service", path = "/v1/book") //name == book-service/application.properties/application.name
 public interface BookServiceClient {
 
     Logger logger = LoggerFactory.getLogger(BookServiceClient.class);
