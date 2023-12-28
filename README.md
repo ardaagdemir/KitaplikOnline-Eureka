@@ -1,7 +1,6 @@
 <center>
 
 ## Kitaplik-Online Microservice REST Mimari
-![Proje Diyagram](readme-images/microservice-eureka.PNG)
 </center>
 
 ---
