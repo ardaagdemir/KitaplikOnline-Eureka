@@ -1,7 +1,7 @@
 <center>
 
 ## Kitaplik-Online Microservice REST Mimari
-![Proje Diyagram](C:\Users\Arda\Desktop\microservice-eureka.PNG)
+![Proje Diyagram](readme-images/microservice-eureka.PNG)
 </center>
 
 ---
@@ -41,7 +41,7 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
 ### <span style=color:royalblue>ACID (Atomicity, Consistency, Isolation, Durability)</span>
 - #### Atomicity 
     -  Örneğin bir güncelleme işlemi başlatıldığında bu güncelleme işlemine ait 5 adet daha güncelleme var olsun. <br>2 Güncelleme işlemi ardından 3. güncelleme işleminde bir sorun çıktığında güncelleme işlemi orada kalmamalıdır. <br> Böyle bir durumda ya bütün işlem geriye alınmalıdır ya da bütün işlem başarılı sonuçlanmalıdır.
-- #### Bkz. [Consistency](#consistency)
+- #### --> Bkz. [Consistency](#consistency)
 - #### Isolation
   -  Aynı veri üzerinde işlem gerçekleştiren transaction birbirini etkilememelidir. Bunun için gerekirse veri setleri kilitlenmelidir. <br>Bu transaction'lar senkron bir şekilde çalışmalıdır.
 - #### Durability
@@ -131,7 +131,7 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
 <br>Tabii ki bu durumda da bağımlılık Eureka' ya olmaktadır. Çünkü Eureka bulutta çalışmadığında bütün iletişim kopacak ve uygulama çalışmayacaktır.
 <br>Bu durumun önüne geçmek için sunucularda her zaman Eureka' ya yüksek öncelik verilir. Eureka' nın bulunduğu pod' a gerçek zamanlı olarak dinleme yapabilmek adına sinyaller gönderilir. 
 <br>Olası bir sorun oluştuğunda bu sorun henüz daha uygulamanın diğer alanlarına ulaşmadan, bu pod yerine yeni bir pod ayağa kaldırılır ve bu sayede Eureka' da herhangi bir hata olması durumu minimize edilebilir.
-<br>[Eureka UI](http://localhost:8761/)
+<br>[Eureka UI - (locahgost:8761)](http://localhost:8761/)
 
 #### _<span style="color:orange">!! Eureka kullanırken genellikle onunla beraber kullanılan HttpClient aracı FeignClient'dır.</span>_
 
@@ -184,7 +184,7 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
   - Uygulamadaki çeşitli adımları izleyebilmeye yarayan bir **monitoring** yöntemidir.
   - API Gateway ile birlikte kullanılabilir.
   - Actuator ayarları için gateway/application.yml dosyasına bakılabilir. Buradaki yapılandırma ile üretilen bir link üzerinden actutor yapılabilir.
-<br>[Actuator Monitoring All Endpoints](http://localhost:8888/actuator)
+<br>[Actuator Monitoring All Endpoints - (localhost:8888/actuator)](http://localhost:8888/actuator)
 
 #### _<span style="color:orange"> !! Bu Uygulamada API Gateway, Eureka üzerinden çalışmaktadır. </span>_
 
@@ -234,7 +234,7 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
   <br>Bu modül, içerisinde bir **proto** dosyasını barındıracak ve bir **şablon görevi** görecektir. .proto dosyasında yapılan tanımlamalar sonucunda gRPC interfaceler ve modeller oluşturacaktır. 
   <br>Bu interface ve modeller aracılığıyla **_gRPC Server_** tarafında bazı tanımlamalar yapılacak ve **_gRPC Client_** bu serverdaki tanımlamaları talep edebilecektir.
   <br>Interface ve modellerin oluşturulması için **_mvn clear install_** komutunu çalıştırarak, target dosyasının oluşturulması gerekmektedir.
-  <br> **_Bkz. [common-service-target](common-service/target/classes/com/kitaplik/bookservice)_**
+  <br> **_--> Bkz. [common-service-target](common-service/target/classes/com/kitaplik/bookservice)_**
  
 
   - Bu uygulamada library-service --> gRPC **_client_**, book-service --> gRPC **_server_** görevi görecektir.
@@ -252,7 +252,7 @@ _**Yukarıdaki kütüphane yerine Spring Cloud CircuitBreaker Resilience4j kulla
   - **Hata Yönetimi:** Client stub, gRPC sunucusu ile iletişim sırasında oluşabilecek hataları ele alır. Bu, iletişim hatası, zaman aşımı veya diğer hata durumlarını içerir.
 
 
-#### <span style=color:orange> !! gRPC henüz Spring-Boot-Starter entagrasyonu yapılmış bir teknoloji değildir. Ancak bu teknolojinin Spring-Boot' a entegrasyonu konusunda bir geliştirme örneği yapılmıştır. Uygulamada bu bağımlılık kullanılmıştır. </span> <br>Bkz. _**[gRPC-Spring-Boot-Starter Documentation](https://yidongnan.github.io/grpc-spring-boot-starter/en/)**_
+#### <span style=color:orange> !! gRPC henüz Spring-Boot-Starter entagrasyonu yapılmış bir teknoloji değildir. Ancak bu teknolojinin Spring-Boot' a entegrasyonu konusunda bir geliştirme örneği yapılmıştır. Uygulamada bu bağımlılık kullanılmıştır. </span> <br>_**--> Bkz. [gRPC-Spring-Boot-Starter Documentation](https://yidongnan.github.io/grpc-spring-boot-starter/en/)**_
 
 
 - Bu işlemlerden sonra `book-service' in` bir gRPC Service olabilmesi için bir **bean** oluşturulması gerekmektedir. `BookServiceApplication` sınıfı altında oluşturulmuştur.
