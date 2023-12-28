@@ -27,13 +27,16 @@ public class BookGrpcServiceImpl extends BookServiceGrpc.BookServiceImplBase {
         BookIdDto bookIdDto = bookRepository.getBookByIsbn(request.getIsbn())
                 .map(book -> new BookIdDto(book.getId(), book.getIsbn()))
                 .orElseThrow(() -> new BookNotFoundException("Book could not found by isbn: " + request.getIsbn()));
+        //responseObserver' ın içerisine dönüş değeri verilir
         responseObserver.onNext(
                 BookId.newBuilder()
                         .setBookId(bookIdDto.getBookId())
                         .setIsbn(bookIdDto.getIsbn())
                         .build()
         );
-        responseObserver.onCompleted();
+
+        responseObserver.onCompleted(); //The server has finished sending all the data to the client. There will be no more messages to be expected.
+
         super.getBookIdByIsbn(request, responseObserver);
     }
 }

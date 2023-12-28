@@ -22,7 +22,7 @@ public class LibraryService {
     private final ILibraryRepository libraryRepository;
     private final BookServiceClient bookServiceClient;
     @GrpcClient("book-service")
-    private BookServiceGrpc.BookServiceBlockingStub bookServiceBlockingStub;
+    private BookServiceGrpc.BookServiceBlockingStub bookServiceBlockingStub; //Used for Synchronous Communication
 
     public LibraryService(ILibraryRepository libraryRepository, BookServiceClient bookServiceClient) {
         this.libraryRepository = libraryRepository;

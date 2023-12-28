@@ -12,7 +12,7 @@
     <artifactId>common-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>common-service</name>
-    <packaging>jar</packaging>
+    <packaging>jar</packaging> <!-- maven' da bu ifade eklenmez ise target dosyaları jar' ın içerisine eklenmez ve diğer sınıflardan ulaşılamaz -->
     <description>Demo project for Spring Boot</description>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -43,6 +43,7 @@
         </dependency>
     </dependencies>
 
+    <!-- specific gRPC build -->
     <build>
         <extensions>
             <extension>

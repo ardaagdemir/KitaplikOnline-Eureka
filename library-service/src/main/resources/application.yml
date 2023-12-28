@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8090
 
 spring:
   application:
@@ -14,8 +14,8 @@ spring:
       ddl-auto: create-drop
 eureka:
   instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${random.value} #değişken bir ip belirlemek
+    prefer-ip-address: true #Eureka sunucusuna kaydedilen uygulamanın IP adresinin kullanılmasını belirtir, false olursa uygulamanın app name' i ile kaydedilir
+    instance-id: ${spring.application.name}:${random.value} #library-service' in birden çok kez ayağa kaldırılmasını ve eureka'ya kayıt yapılmasını sağlar
   client:
     service-url:
       default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
@@ -23,7 +23,7 @@ grpc:
   server:
     port: 9894
   client:
-    book-service:
-      enable-keep-alive: true
-      keep-alive-without-calls: true
-      negotiation-type: plaintext
+    book-service: #client name
+      enable-keep-alive: true #keep-alive
+      keep-alive-without-calls: true #call dışında devamlı açık olması sunucu tarafında yük yaratabilir!
+      negotiation-type: plaintext #bir ağ bağlantısı üzerinde kullanılan iletişim protokolünün, metin tabanlı (plaintext) bir formatta olduğunu belirtir

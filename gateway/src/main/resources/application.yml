@@ -25,9 +25,11 @@ eureka:
   instance:
     prefer-ip-address: true
 
+#Spring-Actuator
 management:
   endpoints:
     web:
       exposure:
         include: "*"  #bütün actuator linklerini ekle
         exclude: info #çıkarmak istediğimiz linkler
+

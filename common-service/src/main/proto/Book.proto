@@ -1,19 +1,20 @@
 syntax = "proto3";
-option java_multiple_files = true;
-package com.kitaplik.bookservice;
+option java_multiple_files = true; //bir proto dosyasında birden fazla servis yazılmasını sağlar
+package com.kitaplik.bookservice; //proto dosyasının bulunduğu klasör tanıtılmalıdır
 
-//request
+//response --> objeler mesaj olarak kullanılır
 message BookId {
-  string bookId = 1;
-  string isbn = 2;
+  string bookId = 1; //BookId nesnesinin birinci index değeri
+  string isbn = 2; //BookId nesnesinin ikinci index değeri
+  //Buradaki sayı tanımlamaları, gRPC' nin ürettiği constructor' ın parametre sırası anlamına gelir
 }
 
-//response
+//request
 message Isbn {
-  string isbn = 1;
+  string isbn = 1; //Isbn nesnesinin ikinci index değeri
 }
 
 //rpc --> remote procedure call --> access modifier
 service BookService{
-  rpc getBookIdByIsbn (Isbn) returns (BookId);
+  rpc getBookIdByIsbn (Isbn) returns (BookId); //bir metot tanımlamasını ifade eder
 }

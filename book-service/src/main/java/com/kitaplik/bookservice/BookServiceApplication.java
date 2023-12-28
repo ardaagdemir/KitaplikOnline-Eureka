@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit;
 
 /*
 CommandLineRunner, uygulama ayağa kalkarken veri ekleyebilmek için kullanılan bir implementasyondur.
-@EnableEurekaClient --> Eureka Server ile etkilesim kurmak için kullanılır.
+@EnableEurekaClient --> Bu mikroservisin bir Eureka istemcisi olarak davranmasını sağlar.
+                        Servis Eureka sunucuya kaydolur ve başka servisler tarafından bulunabilir hale gelir.
  */
 
 @SpringBootApplication
@@ -42,12 +43,20 @@ public class BookServiceApplication implements CommandLineRunner {
         System.out.println(books);
     }
 
+    /**
+     * Returns a GrpcServerConfigurer that configures the keep alive settings for the server.
+     *
+     * @return the GrpcServerConfigurer for keep alive settings
+     */
     @Bean
     public GrpcServerConfigurer keepAliveServerConfigurer(){
         return serverBuilder -> {
+            // Check if the server builder is an instance of NettyServerBuilder
             if (serverBuilder instanceof NettyServerBuilder) {
-                ((NettyServerBuilder) serverBuilder).keepAliveTime(30, TimeUnit.SECONDS)
-                        .keepAliveTimeout(5, TimeUnit.SECONDS).permitKeepAliveWithoutCalls(true);
+                ((NettyServerBuilder) serverBuilder)
+                        .keepAliveTime(30, TimeUnit.SECONDS)
+                        .keepAliveTimeout(5, TimeUnit.SECONDS)
+                        .permitKeepAliveWithoutCalls(true);
             }
         };
     }
